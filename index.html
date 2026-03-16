@@ -14,20 +14,19 @@
                 <p>List</p>
             </div>
             <div class="list">
-                <ul id="taskList"><!--Displayed Tasks--></ul>
+                <ul id="taskList"><!--Mark Task Complete--><!--Displayed Tasks--><!--Delete Task--></ul>
             </div>
             
-            <!--Add a Task-->
-            <!--Mark Task Complete-->
-            <!--Delete Task-->
-            <input id="orderIdInput" placeholder="Enter Order ID">
-<button id="deleteOrder">Delete Order</button>
-
+            
         </div>
-
+        <!--Add a Task-->
         <form id="addTask">
             <label for="title">Task:</label><br>
-            <input type="text" id="title" name="title" placeholder="Enter Task Name" required><br><br>
+            <input type="text" id="title" name="title" placeholder="Enter A Task" required><br>
+
+            <label for="title">Due Date:</label><br>
+            <input type="date" id="due" name="title" placeholder="Enter A Date" required><br><br>
+
             <button type="submit" class="black_button">Add Task</button>
         </form>
 

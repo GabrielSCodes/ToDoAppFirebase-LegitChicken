@@ -4,22 +4,23 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Form</title>
         <link href="style.css" rel="stylesheet">
+        <title>Signup Form</title>
     </head>
     <body>
-        <h2> Login </h2>
+        <h2> Signup </h2>
         <div class="form_container">
-            <form id="loginForm">
+            <form id="signupForm">
+                <label for="usernm">Username:</label><br>
+                <input type="text" id="usernm" name="username" required><br>
                 <label for="email">Email:</label><br>
                 <input type="email" id="email" name="email" required><br>
-            
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password" required><br><br>
-                <button type="submit" id="login" class="black_button">Login</button>
+                <button type="submit" id="signup" class="black_button">Sign Up</button>
             </form>
-            <p> Don't have an account? <a href="signup.html"> Create One </a></p>
+            <p> Already have an account? <a href="login.html"> Login </a></p>
         </div>
-        <script type="module" src="script.js" defer></script>
+        <script type="module" src="script.js"></script>
     </body>
 </html>
