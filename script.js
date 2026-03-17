@@ -195,6 +195,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("Error reading data from Firestore:", error); 
   }
 });
+//Dsiplay2: Filtering 
+
 
 //Add a new task
 const addTask = document.getElementById("addTask");
