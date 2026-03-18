@@ -3,7 +3,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    
     background-color: #A5A58D;
 }
 #email{
@@ -27,9 +27,23 @@ body{
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
     font-size: 32px;
-    color: #999;
+    color: #8B8C89;
     padding-left: 50px;
-    margin-top: 30px;
+    padding-bottom: -10px;
+}
+#login{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6B705C;
+    color: #FEFAE0;
+    width:200px;
+    height: 60px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 h1{
     font-family: 'Roboto', sans-serif;
