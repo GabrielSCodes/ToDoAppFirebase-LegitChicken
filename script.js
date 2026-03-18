@@ -80,6 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
 //Display tasks
 document.addEventListener("DOMContentLoaded", async () => { 
   const taskCollection = collection(db, "tasks");
@@ -98,11 +100,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Tasks Array:", tasks); 
 
     const list = document.getElementById("taskList"); 
-    
-    tasks.forEach((task) => { 
-        //List element
+
+    function renderTasks(filter) {
+      list.innerHTML = ""; // Clear the list
+      tasks.forEach((task) => {
+        if (filter === "completed" && !task.completed) {
+          return; // Skip non-completed tasks
+        }
+        if (filter === "pending" && task.completed) {
+          return; // Skip completed tasks
+        }
+
         const li = document.createElement("li");
-        //Task completion checkbox
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         if (task.completed) {
@@ -115,6 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               completed: checkbox.checked
             });
             alert("Task completed status updated successfully!");
+            window.location.href = "index.html";
           } catch (error) {
             alert("Error updating: " + error.message);
             console.error("Update error:", error);
@@ -122,38 +132,27 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         li.appendChild(checkbox);
-        //Task details
         if(auth.currentUser.uid !== task.userId) {
-          return; // doesnt show tasks that don't belong to the current user
+          return; // Skip tasks that don't belong to the current user
         }
         const taskDetails = document.createElement("span");
         taskDetails.textContent = ` Task: ${task.title} / Created At: ${(task.createdAt.toDate()).toString().substring(3,21)} / Due Date: ${task.dueDate}`;
         li.appendChild(taskDetails);
-        //Edit due date task button
+
         const editButton = document.createElement("button");
         editButton.textContent = "Edit Due Date";
-        
         editButton.onclick = function () {
-          // Create a container for the input and button
           const inputContainer = document.createElement("div");
-        
-          // Create the date input field
           const inputDate = document.createElement("input");
           inputDate.type = "date";
-          inputDate.style.marginRight = "10px"; // Add some spacing for better UI
+          inputDate.style.marginRight = "10px";
           inputContainer.appendChild(inputDate);
-        
-          // Create a save button
           const saveButton = document.createElement("button");
           saveButton.textContent = "Save";
           inputContainer.appendChild(saveButton);
-        
-          // Append the input container to the list item
           li.appendChild(inputContainer);
-        
-          // Handle the save button click
           saveButton.onclick = function () {
-            const newDate = inputDate.value; // Get the selected date
+            const newDate = inputDate.value;
             if (newDate) {
               updateDoc(doc(db, "tasks", task.id), {
                 dueDate: newDate,
@@ -173,7 +172,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
 
         li.appendChild(editButton);
-        //Delete task button
         const newButton = document.createElement("button");
         newButton.textContent = "Delete Task";
         newButton.onclick = function() {
@@ -188,14 +186,33 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         };
         li.appendChild(newButton);
-        //Created the li
         list.appendChild(li); 
+      });
+    }
+
+    const allButton = document.getElementById("all");
+    const completedButton = document.getElementById("completed");
+    const pendingButton = document.getElementById("pending");
+
+    allButton.addEventListener("click", () => {
+      console.log("All button clicked");
+      renderTasks("all");
     });
+    completedButton.addEventListener("click", () => {
+      console.log("Completed button clicked");
+      renderTasks("completed");
+    });
+    pendingButton.addEventListener("click", () => {
+      console.log("Pending button clicked");
+      renderTasks("pending");
+    });
+
+    renderTasks("all");
   } catch (error) { 
     console.error("Error reading data from Firestore:", error); 
   }
 });
-//Dsiplay2: Filtering 
+
 
 
 //Add a new task
