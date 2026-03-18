@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #A5A58D;
+}
+#email{
+    width: 700px;
+    height: 90px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 90px;
+    background-color: #E7ECEF;
+}
+#password{
+    width: 700px;
+    height: 90px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 90px;
+    background-color: #E7ECEF;
+}
+#email::placeholder, #password::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    color: #999;
+    padding-left: 50px;
+    margin-top: 30px;
+}
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 64px;
+    color: black;
+    margin-bottom: 20px;
+}
+h2{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+h4{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+h5{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 5px;
+}
+p{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+buttonText{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
