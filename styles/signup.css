@@ -1,9 +1,10 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body{
     display: flex;
+    background-color: #A5A58D;
     flex-direction:column;
-    align-items: center;
-    background-color: #274C77
+    align-items: start;
 }
 a{
     color: #FEFAE0;
@@ -31,7 +32,7 @@ cursor:pointer;
 #acc{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #8B8C89;
+    color: black;
 }
 #email{
     width: 700px;
@@ -40,7 +41,7 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #8B8C89;
+    background-color: #E7ECEF;
     font-size:24px;
     padding-left: 50px;
 }
@@ -51,18 +52,18 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #8B8C89;
+    background-color: #E7ECEF;
     font-size:24px;
     padding-left: 50px;
 }
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-    color: #FEFAE0;
+    color: #8B8C89;
 }
 #login{
-    background-color: #A3CEF1;
-    color: black;
+    background-color: #303A2F;
+    color: #FEFAE0;
     width:260px;
     height:80px;
     border: none;
@@ -79,42 +80,42 @@ cursor:pointer;
 h1{
     font-family: 'Roboto', sans-serif;
     font-size: 64px;
-    color: #E7ECEF;
+    color: black;
     margin-bottom: 20px;
 }
 h2{
     font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
+    font-size: 48px;
     color: #555;
     margin-bottom: 30px;
 }
 h3{
     font-family: 'Inter', sans-serif;
-    font-size: 40px;
+    font-size: 1.2rem;
     color: #777;
     margin-bottom: 15px;
 }
 h4{
     font-family: 'Inter', sans-serif;
-    font-size: 32px;
+    font-size: 1rem;
     color: #999;
     margin-bottom: 10px;
 }
 h5{
     font-family: 'Inter', sans-serif;
-    font-size: 24px;
+    font-size: 0.9rem;
     color: #bbb;
     margin-bottom: 5px;
 }
 p{
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     color: #333;
     margin-bottom: 20px;
 }
 buttonText{
     font-family: 'Inter', sans-serif;
-    font-size: 24px;
+    font-size: 1rem;
     color: #fff;
 }
 

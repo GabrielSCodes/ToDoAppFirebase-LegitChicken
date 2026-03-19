@@ -9,6 +9,9 @@ a{
     color: #FEFAE0;
     text-decoration: none;
 }
+#head{
+    padding-bottom: 35px;
+}
 .signup_link{
     margin-top: 20px;
     text-align:center;
@@ -24,6 +27,11 @@ cursor:pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#acc{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: black;
 }
 #email{
     width: 700px;
@@ -53,13 +61,14 @@ cursor:pointer;
     color: #8B8C89;
 }
 #login{
-    background-color: #6B705C;
+    background-color: #303A2F;
     color: #FEFAE0;
-    width:200px;
-    height: 60px;
+    width:260px;
+    height:80px;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
     font-family: 'Inter', sans-serif;
+    font-weight: 500;
     font-size: 1.5rem;
     cursor: pointer;
     margin: 0 auto;
@@ -75,7 +84,7 @@ h1{
 }
 h2{
     font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
+    font-size: 48px;
     color: #555;
     margin-bottom: 30px;
 }
@@ -107,4 +116,45 @@ buttonText{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     color: #fff;
+}
+
+
+@media screen and (max-width: 1279px) and (min-width: 800px) {
+    #email, #password {
+        width: 500px;
+        font-size: 20px;
+    }
+    #login {
+        width: 200px;
+        font-size: 1.2rem;
+    }
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 799px) {
+    #email, #password {
+        width: 70%;
+        height:60px;
+        font-size: 18px;
+    }
+    #email::placeholder, #password::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #8B8C89;
+}
+    #login {
+        width: 60%;
+        height:60px;
+        font-size: 1.2rem;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
 }

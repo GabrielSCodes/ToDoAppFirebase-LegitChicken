@@ -331,13 +331,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeToggle) {
         themeToggle.addEventListener('click', function () {
-            alert('Dark theme toggled!');
             const link = document.getElementById('themeStylesheet');
 
             if (link && link.getAttribute('href').includes('styles/login.css')) {
                 link.setAttribute('href', 'styles/loginDark.css');
             } else if (link && link.getAttribute('href').includes('styles/loginDark.css')) {
                 link.setAttribute('href', 'styles/login.css');
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle2');
+
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            const link = document.getElementById('themeStylesheet2');
+
+
+            if (link && link.getAttribute('href').includes('styles/signup.css')) {
+                link.setAttribute('href', 'styles/signupDark.css');
+            } else if (link && link.getAttribute('href').includes('styles/signupDark.css')) {
+                link.setAttribute('href', 'styles/signup.css');
             }
         });
     }
