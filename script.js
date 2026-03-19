@@ -1,6 +1,6 @@
 import { auth, db } from "./firebase-config.js";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { collection, getDocs, setDoc, deleteDoc, doc, addDoc, serverTimestamp, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"; 
+import { collection, getDocs, setDoc, deleteDoc, doc, addDoc, serverTimestamp, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"; 
 
 //Signup
 document.addEventListener("DOMContentLoaded", () => {
@@ -61,15 +61,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const userStatus = document.getElementById("userStatus");
   const nameofuser = document.getElementById("nameofuser");
   const logoutBtn = document.getElementById("logoutBtn");
+  const dateElement = document.getElementById("date");
+  // show todays date
+  if (dateElement) {
+    const currentDate = new Date();
+    dateElement.textContent = "Today's Date: " + currentDate.toDateString();
+  }
   if (!userStatus || !logoutBtn) return;
   if (!nameofuser || !logoutBtn) return;
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
       userStatus.textContent = "Logged in as: " + user.email;
-      nameofuser.textContext = "Welcome back to your To-do list, "+ user.username+ "!";
+      // Fetch username from Firestore
+      try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const username = userDoc.data().username;
+          nameofuser.textContent = "Welcome back to your To-do list, " + username + "!";
+        }
+      } catch (error) {
+        console.error("Error fetching username:", error);
+        nameofuser.textContent = "Welcome back to your To-do list, User!";
+      }
     } else {
       userStatus.textContent = "Not logged in. Redirecting...";
-      nameofuser.textContext = "Please log in to access your To-do list.";
+      nameofuser.textContent = "Please log in to access your To-do list.";
       setTimeout(() => {
         window.location.href = "login.html";
       }, 2000);
@@ -120,6 +136,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         //start
         const li = document.createElement("li");
+        li.style.listStyleType = "none";
+        const container = document.createElement("div");
+        container.style.display = "flex";
+        container.style.alignItems = "center";
+        container.style.borderTop = "1px solid #ccc";
         // set color of a div based on priority
         const priorityColor = document.createElement("div");
         priorityColor.style.width = "10px";
@@ -138,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         priorityColor.style.display = "inline-block";
         priorityColor.style.marginRight = "10px";
-        li.appendChild(priorityColor);
+        container.appendChild(priorityColor);
         //checkbox
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
@@ -158,13 +179,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Update error:", error);
           }
         });
-        li.appendChild(checkbox);
+        container.appendChild(checkbox);
         if(!auth.currentUser || auth.currentUser.uid !== task.userId) {
           return; // Skip tasks that don't belong to the current user
         }
         const taskDetails = document.createElement("span");
         taskDetails.textContent = ` Task: ${task.title} / Created At: ${(task.createdAt.toDate()).toString().substring(3,21)} / Due Date: ${task.dueDate}`;
-        li.appendChild(taskDetails);
+        container.appendChild(taskDetails);
         //Edit title
         const editTitleButton = document.createElement("button");
         editTitleButton.textContent = "Edit Title";
@@ -198,7 +219,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               }
           };
         }
-        li.appendChild(editTitleButton);
+        container.appendChild(editTitleButton);
         //Edit due date
         const editButton = document.createElement("button");
         editButton.textContent = "Edit Due Date";
@@ -231,7 +252,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
           };
         }
-        li.appendChild(editButton);
+        container.appendChild(editButton);
         //Delete 
         const newButton = document.createElement("button");
         newButton.textContent = "Delete Task";
@@ -246,9 +267,10 @@ document.addEventListener("DOMContentLoaded", async () => {
               console.error("Delete error:", error);
             });
         };
-        li.appendChild(newButton);
+        container.appendChild(newButton);
         //End
-        list.appendChild(li); 
+        li.appendChild(container);
+        list.appendChild(li);
       });
     }
 
