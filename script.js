@@ -59,14 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
 //Check if logged in
 document.addEventListener("DOMContentLoaded", () => {
   const userStatus = document.getElementById("userStatus");
+  const nameofuser = document.getElementById("nameofuser");
   const logoutBtn = document.getElementById("logoutBtn");
   if (!userStatus || !logoutBtn) return;
-
+  if (!nameofuser || !logoutBtn) return;
   onAuthStateChanged(auth, (user) => {
     if (user) {
       userStatus.textContent = "Logged in as: " + user.email;
+      nameofuser.textContext = "Welcome back to your To-do list, "+ user.username+ "!";
     } else {
       userStatus.textContent = "Not logged in. Redirecting...";
+      nameofuser.textContext = "Please log in to access your To-do list.";
       setTimeout(() => {
         window.location.href = "login.html";
       }, 2000);
@@ -95,7 +98,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   try { 
     const querySnapshot = await getDocs(taskCollection); 
     console.log("Query Snapshot:", querySnapshot); 
-
     const tasks = []; 
     querySnapshot.forEach((doc) => { 
       tasks.push({ 
@@ -104,16 +106,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
     console.log("Tasks Array:", tasks); 
-
+    //Get list
     const list = document.getElementById("taskList"); 
-
-    function renderTasks(filter) {
+    //Filter
+    function renderTasks(filterStatus, filterPriority) {
       list.innerHTML = ""; // Clear the list
       tasks.forEach((task) => {
-        if (filter === "completed" && !task.completed) {
-          return; // Skip non-completed tasks
+        if (filterStatus === "completed" && !task.completed) {
+          return; // Skip non completed tasks
         }
-        if (filter === "pending" && task.completed) {
+        if (filterStatus === "pending" && task.completed) {
           return; // Skip completed tasks
         }
         //start
