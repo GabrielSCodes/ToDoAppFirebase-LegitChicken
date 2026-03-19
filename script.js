@@ -5,6 +5,7 @@ import { collection, getDocs, setDoc, deleteDoc, doc, addDoc, serverTimestamp, u
 //Signup
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signupForm");
+  if (!signupForm) return;
 
   signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Login
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
+  if (!loginForm) return;
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -58,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const userStatus = document.getElementById("userStatus");
   const logoutBtn = document.getElementById("logoutBtn");
+  if (!userStatus || !logoutBtn) return;
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -84,6 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Display tasks
 document.addEventListener("DOMContentLoaded", async () => { 
+  const taskList = document.getElementById("taskList");
+  if (!taskList) return;
+  
   const taskCollection = collection(db, "tasks");
 
   try { 
@@ -110,8 +116,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (filter === "pending" && task.completed) {
           return; // Skip completed tasks
         }
-
+        //start
         const li = document.createElement("li");
+        // set color of a div based on priority
+        const priorityColor = document.createElement("div");
+        priorityColor.style.width = "10px";
+        priorityColor.style.height = "10px";
+        // Set the background color based on priority
+        switch (task.priority) {
+          case "High":
+            priorityColor.style.backgroundColor = "red";
+            break;
+          case "Medium":
+            priorityColor.style.backgroundColor = "yellow";
+            break;
+          case "Low":
+            priorityColor.style.backgroundColor = "green";
+            break;
+        }
+        priorityColor.style.display = "inline-block";
+        priorityColor.style.marginRight = "10px";
+        li.appendChild(priorityColor);
+        //checkbox
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         if (task.completed) {
@@ -130,15 +156,48 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Update error:", error);
           }
         });
-
         li.appendChild(checkbox);
-        if(auth.currentUser.uid !== task.userId) {
+        if(!auth.currentUser || auth.currentUser.uid !== task.userId) {
           return; // Skip tasks that don't belong to the current user
         }
         const taskDetails = document.createElement("span");
         taskDetails.textContent = ` Task: ${task.title} / Created At: ${(task.createdAt.toDate()).toString().substring(3,21)} / Due Date: ${task.dueDate}`;
         li.appendChild(taskDetails);
-
+        //Edit title
+        const editTitleButton = document.createElement("button");
+        editTitleButton.textContent = "Edit Title";
+        editTitleButton.onclick = function () {
+          const inputContainer = document.createElement("div");
+          const inputTitle = document.createElement("input");
+          inputTitle.type = "text";
+          inputTitle.value = task.title;
+          inputTitle.style.marginRight = "10px";
+          inputContainer.appendChild(inputTitle);
+          const saveButton = document.createElement("button");
+          saveButton.textContent = "Save";
+          inputContainer.appendChild(saveButton);
+          li.appendChild(inputContainer);
+          saveButton.onclick = function () {
+            const newTitle = inputTitle.value;
+            if (newTitle) {
+              updateDoc(doc(db, "tasks", task.id), {
+                title: newTitle,
+              })
+                .then(() => {
+                  alert("Title updated successfully!");
+                  window.location.href = "index.html";
+                })
+                .catch((error) => {
+                  alert("Error updating: " + error.message);
+                  console.error("Update error:", error);
+                });
+              } else {
+                alert("Please enter a valid title.");
+              }
+          };
+        }
+        li.appendChild(editTitleButton);
+        //Edit due date
         const editButton = document.createElement("button");
         editButton.textContent = "Edit Due Date";
         editButton.onclick = function () {
@@ -169,9 +228,9 @@ document.addEventListener("DOMContentLoaded", async () => {
               alert("Please select a valid date.");
             }
           };
-        };
-
+        }
         li.appendChild(editButton);
+        //Delete 
         const newButton = document.createElement("button");
         newButton.textContent = "Delete Task";
         newButton.onclick = function() {
@@ -186,6 +245,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         };
         li.appendChild(newButton);
+        //End
         list.appendChild(li); 
       });
     }
@@ -213,15 +273,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-
-
 //Add a new task
 const addTask = document.getElementById("addTask");
-
-addTask.addEventListener("submit", async (event) => {
+if (addTask) {
+  addTask.addEventListener("submit", async (event) => {
   event.preventDefault();
   const title = document.getElementById("title").value;
   const due = document.getElementById("due").value;
+  const priority = document.getElementById("priority").value;
   const user = auth.currentUser;
     try {
       await addDoc(collection(db, "tasks"), {
@@ -229,6 +288,7 @@ addTask.addEventListener("submit", async (event) => {
         title: title,
         completed: false,
         dueDate: due,
+        priority: priority,
         createdAt: serverTimestamp()
       });
       alert("Task added successfully!");
@@ -237,5 +297,24 @@ addTask.addEventListener("submit", async (event) => {
     } catch (error) {
       alert("Error adding: " + error.message);
       console.error("Task error:", error);
+    }
+  });
+}
+
+//Dark Theme
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            alert('Dark theme toggled!');
+            const link = document.getElementById('themeStylesheet');
+
+            if (link && link.getAttribute('href').includes('styles/login.css')) {
+                link.setAttribute('href', 'styles/loginDark.css');
+            } else if (link && link.getAttribute('href').includes('styles/loginDark.css')) {
+                link.setAttribute('href', 'styles/login.css');
+            }
+        });
     }
 });

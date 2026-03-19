@@ -5,11 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>To-Do List</title>
-        <link href="style.css" rel="stylesheet">
+        <link id="themeStylesheet" href="styles/style.css" rel="stylesheet">
     </head>
     <body>
         <h1>To-Do List</h1>
         <p id="userStatus">Checking login status...</p>
+        <img src="assets/darkTheme-removebg-preview 2.png" alt="Dark Theme Image" class="dark_theme_image" id="themeToggle">
         <div>
             <div>
                 <p>List</p>
@@ -32,6 +33,13 @@
             <label for="title">Due Date:</label><br>
             <input type="date" id="due" name="title" placeholder="Enter A Date" required><br><br>
 
+            <label for="priority">Priority:</label><br>
+            <select id="priority" name="priority" required>
+                <option value="">Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br><br>
             <button type="submit" class="black_button">Add Task</button>
         </form>
 
