@@ -359,3 +359,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle3');
+
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            const link = document.getElementById('themeStylesheet3');
+
+
+            if (link && link.getAttribute('href').includes('styles/styles.css')) {
+                link.setAttribute('href', 'styles/stylesDark.css');
+            } else if (link && link.getAttribute('href').includes('styles/stylesDark.css')) {
+                link.setAttribute('href', 'styles/styles.css');
+            }
+        });
+    }
+});

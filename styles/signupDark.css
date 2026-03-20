@@ -7,7 +7,7 @@ body{
     align-items: start;
 }
 a{
-    color: #6096BA;
+    color: #FEFAE0;
     text-decoration: none;
 }
 #head{
@@ -61,6 +61,7 @@ margin-right: 20px;
     background-color: #8B8C89;
     font-size:24px;
     padding-left: 50px;
+    color: #FEFAE0;
 }
 #password{
     width: 700px;
@@ -72,6 +73,7 @@ margin-right: 20px;
     background-color: #8B8C89;
     font-size:24px;
     padding-left: 50px;
+    color: #FEFAE0;
 }
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
@@ -207,9 +209,6 @@ p{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     color: #8B8C89;
-}
-.log{
-    color:#FEFAE0;
 }
 
  

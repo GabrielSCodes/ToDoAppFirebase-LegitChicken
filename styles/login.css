@@ -43,7 +43,7 @@ cursor:pointer;
     background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
-    color: #FEFAE0;
+    color: black;
 }
 #password{
     width: 700px;
@@ -55,12 +55,12 @@ cursor:pointer;
     background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
-    color: #FEFAE0;
+    color:black;
+
 }
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-    color: #FEFAE0;
 }
 #login{
     background-color: #8B8C89;
@@ -136,12 +136,19 @@ p{
     h2 {
         font-size: 1.2rem;
     }
+    .dark_theme_image{
+        width: 40px;
+        height: 40px;
+        margin-left:20px;
+    }
 }
 @media screen and (max-width: 799px) {
     #email, #password {
-        width: 70%;
+        width: 250px;
         height:60px;
         font-size: 18px;
+        
+        
     }
     #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
@@ -158,5 +165,11 @@ p{
     }
     h2 {
         font-size: 1.2rem;
+    }
+    .dark_theme_image{
+        width: 30px;
+        height: 30px;
+        display:flex;
+        align-self:right;
     }
 }
