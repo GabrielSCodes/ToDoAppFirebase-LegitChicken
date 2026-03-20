@@ -3,10 +3,10 @@ body{
     display: flex;
     flex-direction:column;
     align-items: center;
-    background-color: #A5A58D;
+    background-color: #E7ECEF;
 }
 a{
-    color: #FEFAE0;
+    color: #6096BA;
     text-decoration: none;
 }
 #head{
@@ -40,9 +40,10 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #E7ECEF;
+    background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
+    color: #FEFAE0;
 }
 #password{
     width: 700px;
@@ -51,18 +52,19 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #E7ECEF;
+    background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
+    color: #FEFAE0;
 }
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-    color: #8B8C89;
+    color: #FEFAE0;
 }
 #login{
-    background-color: #303A2F;
-    color: #FEFAE0;
+    background-color: #8B8C89;
+    color: #E7ECEF;
     width:260px;
     height:80px;
     border: none;
@@ -112,7 +114,7 @@ p{
     color: #333;
     margin-bottom: 20px;
 }
-buttonText{
+#buttonText{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     color: #fff;

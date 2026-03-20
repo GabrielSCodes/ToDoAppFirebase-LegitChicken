@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link id="themeStylesheet2" href="styles/signup.css" rel="stylesheet">
-      <title>Signup Form</title>
-   </head>
-    <body>
-        <div>
-         <img src="assets/image 4.png" alt="Logo" class="logo">
-        </div>
-    <div>
-             <h1> Dont have an account yet?</h1>
-             <h5> Let us help you improve those task management skills. </h5>
-             <h2> Signup </h2>
-             <div class="form_container">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link id="themeStylesheet2" href="styles/signup.css" rel="stylesheet">
+   <title>Signup Form</title>
+</head>
+
+
+<body>
+
+
+<div class="signup-container">
+
+
+    
+    <div class="left-side">
+        <img src="assets/image 4.png" alt="Logo" class="logo">
+    </div>
+
+
+    
+    <div class="right-side">
+        <h1>Don't have an account yet?</h1>
+        <h5 id="mng">Let us help you improve those task management skills.</h5>
+        <h2 id="sign">Sign up</h2>
+
+
+        <div class="form_container">
             <form id="signupForm">
-                 <label for="email">Please enter a valid Email:</label><br>
-                           <input type="email" id="email" name="email" placeholder="Email" required><br>
-                           <label for="password">Create personal password:</label><br>
-                           <input type="password" id="password" name="password" placeholder="Password" required><br><br>
-                          <button type="submit" id="signup" class="black_button">Sign Up</button>
-                </form>
-                 </div>
-            </div>
-            <div>
-                 <p> Have an account? <a href="login.html"> Log In </a></p>
-                     <img src="assets/darkTheme-removebg-preview 2.png" alt="Dark Theme Image" class="dark_theme_image" id="themeToggle2">
-            </div>
-            <script type="module" src="script.js"></script>
-          </body>
-          </html>>
+                <h4 id="label">Please enter a valid Email:</h4>
+                <input type="email" id="email" name="email" placeholder="Email" required><br>
+
+
+                <h4 id="label">Create personal password:</h4>
+                <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+
+
+                <button type="submit" id="signup" class="black_button">Sign Up</button>
+            </form>
+        </div>
+
+
+        <img src="assets/darkTheme-removebg-preview 2.png" 
+             alt="Dark Theme Image" 
+             class="dark_theme_image" 
+             id="themeToggle2">
+    </div>
+
+
+</div>
+
+<div class="bottom-login">
+    <p id="acc">Have an account? <a href="login.html" id="log">Sign In</a></p>
+</div>
+
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

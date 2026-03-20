@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 body{
     display: flex;
-    background-color: #A5A58D;
+    background-color: #E7ECEF;
     flex-direction:column;
     align-items: start;
 }
 a{
-    color: #FEFAE0;
+    color: #6096BA;
     text-decoration: none;
 }
 #head{
@@ -18,8 +18,25 @@ a{
     text-align:center;
 }
 .dark_theme_image{
-   float:right;
 cursor:pointer;
+width:40px;
+height:40px;
+display:flex; 
+align-self: flex-end;
+margin-right: 20px;
+}
+#mng{
+    color:black;
+    font-weight: 400;
+}
+#sign{
+    color:#6096BA;
+}
+#label{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
 }
 .logo{
     width: 150px;
@@ -41,7 +58,7 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #E7ECEF;
+    background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
 }
@@ -52,17 +69,17 @@ cursor:pointer;
     margin-bottom: 20px;
     border: 1px solid black;
     border-radius: 90px;
-    background-color: #E7ECEF;
+    background-color: #B7B7A4;
     font-size:24px;
     padding-left: 50px;
 }
 #email::placeholder, #password::placeholder{
     font-family: 'Inter', sans-serif;
     font-size: 24px;
-    color: #8B8C89;
+    color: #FEFAE0;
 }
-#login{
-    background-color: #303A2F;
+#signup{
+    background-color: #8B8C89;
     color: #FEFAE0;
     width:260px;
     height:80px;
@@ -81,7 +98,7 @@ h1{
     font-family: 'Roboto', sans-serif;
     font-size: 64px;
     color: black;
-    margin-bottom: 20px;
+        margin: 0;
 }
 h2{
     font-family: 'Inter', sans-serif;
@@ -113,7 +130,7 @@ p{
     color: #333;
     margin-bottom: 20px;
 }
-buttonText{
+#buttonText{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     color: #fff;
@@ -159,3 +176,36 @@ buttonText{
         font-size: 1.2rem;
     }
 }
+.signup-container {
+    display: flex;
+    width: 100%;
+    
+ 
+}
+.left-side {
+    background-color: #E7ECEF;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 40px;
+}
+.right-side {
+    width: 65%;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+}
+.bottom-login {
+    padding-left: 80px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+
+ 
