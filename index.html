@@ -8,15 +8,22 @@
         <link id="themeStylesheet3" href="styles/style.css" rel="stylesheet">
     </head>
     <body>
+
+        <div class="top"> 
         <img src="assets/image 4.png" alt="Logo" class="logo">
-        <p id="nameofuser">Welcome back to your To-do list, Username!</p>
+        <div id="imgwrap"> 
+        <h2 id="nameofuser" class="heading">Welcome back to your To-do list, Username!</h2>
+        </div>
+        </div>
+        <img src="assets/darkTheme-removebg-preview 2.png" alt="Dark Theme Image" class="dark_theme_image" id="themeToggle3">
         <p id="userStatus">Checking login status...</p>
         <p id="date">Today's Date: </p>
-        <img src="assets/darkTheme-removebg-preview 2.png" alt="Dark Theme Image" class="dark_theme_image" id="themeToggle3">
+        <button id="logoutBtn" class="black_button">Logout</button>
+        
         <div>
-            <div>
+            <div class="buttons">
                 
-                <p>Filter</p>
+                <h3>Filters:</h3>
                 <button id="all">All</button>
                 <button id="completed">Completed</button>
                 <button id="pending">Pending</button>
@@ -27,26 +34,26 @@
         </div>
         <!--Add a Task-->
         <form id="addTask">
-            <label for="title">Task:</label><br>
-            <input type="text" id="title" name="title" placeholder="Enter A Task" required><br>
+            <h4>Create New Task Here:</h4>
+            <input type="text" id="title" name="title" placeholder="New Task" required><br>
 
-            <label for="title">Due Date:</label><br>
-            <input type="date" id="due" name="title" placeholder="Enter A Date" required><br><br>
+            <h4>Due Date:</h4>
+            <input type="date" id="due" name="title" placeholder="Enter A Date" required><br>
 
-            <label for="priority">Priority:</label><br>
+            <h4>Priority:</h4>
             <select id="priority" name="priority" required>
                 <option value="">Select Priority</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
+                <option value="Low" id="low">Low</option>
+                <option value="Medium" id="med">Medium</option>
+                <option value="High" id="high">High</option>
             </select><br><br>
-            <button type="submit" class="black_button">Add Task</button>
+            <button type="submit" class="black_button" id="addT">Add Task</button>
         </form>
 
         <br>
-        <button id="logoutBtn" class="black_button">Logout</button>
         
-        <p>List</p>
+        
+        <h3>Task List</h3>
         <hr>
         <div class="list">
                 <ul id="taskList"><!--Mark Task Complete--><!--Displayed Tasks--><!--Delete Task--></ul>

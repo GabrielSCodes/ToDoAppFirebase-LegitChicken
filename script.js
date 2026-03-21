@@ -121,6 +121,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         ...doc.data(), 
       });
     });
+    // Sort tasks by priority: High → Medium → Low
+tasks.sort((a, b) => {
+  const order = { High: 1, Medium: 2, Low: 3 };
+  return order[a.priority] - order[b.priority];
+});
+
     console.log("Tasks Array:", tasks); 
     //Get list
     const list = document.getElementById("taskList"); 
@@ -136,15 +142,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         //start
         const li = document.createElement("li");
-        li.style.listStyleType = "none";
+        li.classList.add("task-item");
         const container = document.createElement("div");
-        container.style.display = "flex";
-        container.style.alignItems = "center";
-        container.style.borderTop = "1px solid #ccc";
+        container.classList.add("task-container");
         // set color of a div based on priority
         const priorityColor = document.createElement("div");
         priorityColor.style.width = "10px";
-        priorityColor.style.height = "10px";
+priorityColor.style.height = "10px";
+priorityColor.style.backgroundColor = "red/yellow/green";
+priorityColor.style.display = "inline-block";
+priorityColor.style.marginRight = "10px";
+
+        priorityColor.classList.add("priority-color");
         // Set the background color based on priority
         switch (task.priority) {
           case "High":
@@ -157,12 +166,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             priorityColor.style.backgroundColor = "green";
             break;
         }
-        priorityColor.style.display = "inline-block";
-        priorityColor.style.marginRight = "10px";
         container.appendChild(priorityColor);
         //checkbox
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
+        checkbox.classList.add("task-checkbox");
         if (task.completed) {
           checkbox.checked = true;
         }
@@ -184,17 +192,18 @@ document.addEventListener("DOMContentLoaded", async () => {
           return; // Skip tasks that don't belong to the current user
         }
         const taskDetails = document.createElement("span");
+        taskDetails.classList.add("task-details");
         taskDetails.textContent = ` Task: ${task.title} / Created At: ${(task.createdAt.toDate()).toString().substring(3,21)} / Due Date: ${task.dueDate}`;
         container.appendChild(taskDetails);
         //Edit title
         const editTitleButton = document.createElement("button");
+        editTitleButton.classList.add("task-btn");
         editTitleButton.textContent = "Edit Title";
         editTitleButton.onclick = function () {
           const inputContainer = document.createElement("div");
           const inputTitle = document.createElement("input");
           inputTitle.type = "text";
           inputTitle.value = task.title;
-          inputTitle.style.marginRight = "10px";
           inputContainer.appendChild(inputTitle);
           const saveButton = document.createElement("button");
           saveButton.textContent = "Save";
@@ -222,12 +231,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.appendChild(editTitleButton);
         //Edit due date
         const editButton = document.createElement("button");
+        editButton.classList.add("task-btn");
         editButton.textContent = "Edit Due Date";
         editButton.onclick = function () {
           const inputContainer = document.createElement("div");
           const inputDate = document.createElement("input");
           inputDate.type = "date";
-          inputDate.style.marginRight = "10px";
           inputContainer.appendChild(inputDate);
           const saveButton = document.createElement("button");
           saveButton.textContent = "Save";
@@ -256,6 +265,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         //Delete 
         const newButton = document.createElement("button");
         newButton.textContent = "Delete Task";
+        newButton.classList.add("task-btn");
         newButton.onclick = function() {
           deleteDoc(doc(db, "tasks", task.id))
             .then(() => {
@@ -326,22 +336,48 @@ if (addTask) {
 }
 
 //Dark Theme
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const link = document.getElementById("themeStylesheet");
+
+
+    if (savedTheme === "dark") {
+        link.setAttribute("href", "styles/loginDark.css");
+    } else if (savedTheme === "light") {
+        link.setAttribute("href", "styles/login.css");
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
+
 
     if (themeToggle) {
         themeToggle.addEventListener('click', function () {
             const link = document.getElementById('themeStylesheet');
 
+
             if (link && link.getAttribute('href').includes('styles/login.css')) {
                 link.setAttribute('href', 'styles/loginDark.css');
+                localStorage.setItem("theme", "dark");
             } else if (link && link.getAttribute('href').includes('styles/loginDark.css')) {
                 link.setAttribute('href', 'styles/login.css');
+                localStorage.setItem("theme", "light");
             }
         });
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const link = document.getElementById("themeStylesheet2");
+
+
+    if (savedTheme === "dark") {
+        link.setAttribute("href", "styles/signupDark.css");
+    } else if (savedTheme === "light") {
+        link.setAttribute("href", "styles/signup.css");
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle2');
 
@@ -353,13 +389,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (link && link.getAttribute('href').includes('styles/signup.css')) {
                 link.setAttribute('href', 'styles/signupDark.css');
+                localStorage.setItem("theme", "dark");
             } else if (link && link.getAttribute('href').includes('styles/signupDark.css')) {
                 link.setAttribute('href', 'styles/signup.css');
+                localStorage.setItem("theme", "light");
             }
         });
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const link = document.getElementById("themeStylesheet3");
+
+
+    if (savedTheme === "dark") {
+        link.setAttribute("href", "styles/stylesDark.css");
+    } else if (savedTheme === "light") {
+        link.setAttribute("href", "styles/style.css");
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle3');
 
@@ -369,10 +418,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const link = document.getElementById('themeStylesheet3');
 
 
-            if (link && link.getAttribute('href').includes('styles/styles.css')) {
+            if (link && link.getAttribute('href').includes('styles/style.css')) {
                 link.setAttribute('href', 'styles/stylesDark.css');
+                localStorage.setItem("theme", "dark");
             } else if (link && link.getAttribute('href').includes('styles/stylesDark.css')) {
-                link.setAttribute('href', 'styles/styles.css');
+                link.setAttribute('href', 'styles/style.css');
+                localStorage.setItem("theme", "light");
             }
         });
     }

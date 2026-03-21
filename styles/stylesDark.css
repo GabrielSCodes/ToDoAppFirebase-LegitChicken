@@ -1,0 +1,272 @@
+body{
+    background-color: #274C77;
+}
+.top{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+}
+.heading{
+    margin-left: 30px;
+    align-self: center;
+}
+#all, #completed, #pending{
+    color: #E7ECEF;
+    background-color: #6096BA;
+    border-radius: 30px;
+    width:160px;
+    height:50px;
+    border: solid black 1px;
+    cursor: pointer;
+}
+#title{
+    background-color: #A5A58D;
+    width: 700px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid black 1px;
+    padding-left: 20px;
+    color: white;
+    font-weight:bold;
+}
+#title::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-size:16px;
+    color: white;
+}
+#due{
+    background-color: #A5A58D;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid black 1px;
+    padding-left: 20px;
+    color: white;
+    font-weight:bold;
+}
+#due::placeholder{
+    font-family: 'Inter', sans-serif;
+    font-size:16px;
+    color: white;
+}
+#priority{
+    background-color: #A5A58D;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid black 1px;
+    padding-left: 20px;
+    color: white;
+    font-weight:bold;
+}
+#high{
+    color: red;
+    font-family: 'Inter', sans-serif;
+    font-weight:bold;
+}
+#med{
+    color: yellow;
+    font-family: 'Inter', sans-serif;
+    font-weight:bold;
+}
+#low{
+    color: green;
+    font-family: 'Inter', sans-serif;
+    font-weight:bold;
+}
+#logoutBtn{
+    background-color: #6096BA;
+    color: #E7ECEF;
+    width:100px;
+    height:40px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#addT{
+    background-color: #E7ECEF;
+    color: black;
+    width:150px;
+    height:40px;
+    border: solid black 1px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#taskList {
+    padding: 0;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+}
+.task-item {
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ccc;
+}
+.task-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.priority-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.priority-indicator.high { 
+    background-color: red; 
+}
+.priority-indicator.medium { 
+    background-color: orange; 
+}
+.priority-indicator.low { 
+    background-color: green; 
+}
+.task-checkbox {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+.task-details {
+    flex-grow: 1;
+    font-size: 18px;
+    color: white;
+}
+.task-btn,
+.delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.task-btn {
+    background-color: #6096BA;
+    color: white;
+}
+.task-btn:hover {
+    background-color: #4a7a97;
+}
+.delete-btn {
+    background-color: #d9534f;
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #b52b27;
+}
+.buttons{
+    display: flex;
+    flex-direction:row;
+    gap: 100px;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    padding: 20px;
+}
+.dark_theme_image{
+    width:60px;
+    height:60px;
+    cursor:absolute;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+#imgwrap{
+    position:relative;
+    width:100%;
+}
+.list{
+    max-width: 100vw;
+    margin: 0px auto;
+    margin-right: 25px;
+}
+.dark_theme_image{
+    float:right;
+cursor:pointer;
+}
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 64px;
+    color: white;
+    margin-bottom: 20px;
+}
+h2{
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: white;
+}
+h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: white;
+}
+h4{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+h5{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: white;
+}
+p{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: white;
+}
+#buttonText{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+@media screen and (max-width: 1279px) and (min-width: 800px) {
+    /* Example styles */
+    #email, #password {
+        width: 500px;
+        font-size: 20px;
+    }
+
+
+    h1 {
+        font-size: 48px;
+    }
+
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 799px) {
+    #email, #password {
+        width: 70%;
+        height: 60px;
+        font-size: 18px;
+    }
+
+
+    #email::placeholder,
+    #password::placeholder {
+        font-size: 16px;
+    }
+
+
+    h1 {
+        font-size: 24px;
+    }
+
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}

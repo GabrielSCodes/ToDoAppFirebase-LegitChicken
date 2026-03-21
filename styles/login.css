@@ -92,25 +92,25 @@ h2{
 }
 h3{
     font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
+    font-size: 40px;
     color: #777;
     margin-bottom: 15px;
 }
 h4{
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 32px;
     color: #999;
     margin-bottom: 10px;
 }
 h5{
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 24px;
     color: #bbb;
     margin-bottom: 5px;
 }
 p{
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     color: #333;
     margin-bottom: 20px;
 }
