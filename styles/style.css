@@ -43,9 +43,7 @@ hr{
     margin-left:10%;
     width:300px;
 }
-.randominfo p{
-    font-size:12px;
-}
+
 #title::placeholder{
     font-family: 'Inter', sans-serif;
     font-size:16px;
